@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>iRacing</title>
+
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+  var socket = io.connect('http://localhost');
+  socket.on('session', function (data) {
+    $("#Track").html(data.WeekendInfo.TrackDisplayName);
+
+    var telemetry = {};
+
+    socket.emit('addTelemetry', {name: 'Gear', onChange: true});
+    socket.on('telemetry', function (data) {
+      console.log(data.name, data.value);
+    });
+  });
+  </script>
+</head>
+<body>
+  <h2>iRacing</h2>
+  <p>Track: <span id="Track"></span></p>
+
+  <div id="Telemetry">
+    <div id="Throttle" class="TelemetryBar"></div>
+    <div id="Brake" class="TelemetryBar"></div>
+    <div id="Clutch" class="TelemetryBar"></div>
+  </div>
+</body>
+</html>

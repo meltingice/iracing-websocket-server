@@ -1,0 +1,10 @@
+{
+  "name": "iracing-websocket-server",
+  "description": "A server that streams data from iRacing to the browser using WebSockets.",
+  "version": "0.0.1",
+  "dependencies": {
+    "iracing": "*",
+    "socket.io": "*",
+    "coffee-script": "*"
+  }
+}
