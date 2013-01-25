@@ -1,0 +1,18 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+.TelemetryBar {
+  width: 400px;
+  height: 30px;
+  margin: 10px 0;
+  line-height: 30px;
+}
+.TelemetryBar > div {
+  width: 40%;
+  height: 30px;
+  background-color: black;
+  display: inline-block;
+  margin-left: 10px;
+}

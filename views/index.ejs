@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+
+  <link rel='stylesheet' href='/stylesheets/styles.css' />
+
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+  var socket = io.connect('/');
+  socket.on('session', function (data) {
+    $("#Track").html(data.WeekendInfo.TrackDisplayName);
+
+    var telemetry = {};
+
+    socket.emit('addTelemetry', {name: 'Gear', onChange: true});
+    socket.emit('addTelemetry', {name: 'Throttle', onChange: true});
+    socket.emit('addTelemetry', {name: 'Brake', onChange: true});
+    socket.emit('addTelemetry', {name: 'Clutch', onChange: true});
+
+    socket.on('telemetry', function (data) {
+      if (data.name === "Gear") {
+        $("#Gear").html(data.value);
+      } else {
+        $("#" + data.name)
+          .find('> div')
+          .css('width', (data.value * 100) + "%");
+      }
+    });
+  });
+  </script>
+</head>
+<body>
+  <h2>iRacing</h2>
+  <p>Track: <span id="Track"></span></p>
+  <p>Gear: <span id="Gear"></span></p>
+
+  <div id="Telemetry">
+    <div id="Throttle" class="TelemetryBar">
+      Throttle <div></div>
+    </div>
+    <div id="Brake" class="TelemetryBar">
+      Brake <div></div>
+    </div>
+    <div id="Clutch" class="TelemetryBar">
+      Clutch <div></div>
+    </div>
+  </div>
+</body>
+</html>
