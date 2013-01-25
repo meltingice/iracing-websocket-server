@@ -1,5 +1,4 @@
 (function () {
-  return;
   var socket = io.connect('/');
   socket.on('session', function (data) {
     $("#Track").html(data.WeekendInfo.TrackDisplayName);
