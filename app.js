@@ -43,14 +43,20 @@ var telemetryData = {};
 
 io.sockets.on('connection', function(socket) {
   return iRacing.ready(function() {
-    socket.emit('session', this.getSession());
     socket.on('addTelemetry', function(data) {
-      return telemetryProp[data.name] = data.onChange;
+      console.log("Adding telemetry:", data);
+      telemetryProp[data.name] = data.onChange;
     });
 
     socket.on('removeTelemetry', function(data) {
+      console.log("Removing telemetry:", data);
       return delete telemetryProp[data];
     });
+
+    socket.emit('ready', true);
+    socket.emit('weekend', this.sessions.weekend);
+    socket.emit('session', this.sessions.current);
+    socket.emit('driver', this.cars.driverCar);
 
     return this.onTick(function() {
       var newVal, onChange, prop, _results;
@@ -66,7 +72,7 @@ io.sockets.on('connection', function(socket) {
         }
 
         telemetryData[prop] = newVal;
-        socket.emit('telemetry', {
+        socket.volatile.emit('telemetry', {
           name: prop,
           value: newVal
         });

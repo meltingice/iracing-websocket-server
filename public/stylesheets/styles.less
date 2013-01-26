@@ -1,19 +1,70 @@
+@import "type.less";
+@import "colors.less";
+@import "mixins.less";
+@import "gearstages.less";
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
 body, html {
   margin: 0;
   padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.TelemetryBar {
-  width: 400px;
-  height: 30px;
-  margin: 10px 0;
-  line-height: 30px;
-}
+.Left { float: left; }
+.Right { float: right; }
+.Clear { clear: both; }
 
-.TelemetryBar > div {
-  width: 40%;
-  height: 30px;
-  background-color: black;
-  display: inline-block;
-  margin-left: 10px;
+#Content {
+  #Track {
+    margin: 0 5px;
+    border-bottom: 1px @light_gray solid;
+  }
+
+  #LeftPane, #RightPane {
+    width: 50%;
+  }
+
+  #Gear {
+    font-size: 32px;
+    line-height: 48px;
+    height: 48px;
+    text-align: center;
+    background-color: @darkest_gray;
+    color: @lightest_gray;
+    width: auto;
+    position: relative;
+
+    #GearValue {
+      font-family: "Keania One", monotype, sans-serif;
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  #Engine {
+    .EngineStat {
+      width: 100%;
+      overflow: hidden;
+
+      > p {
+        font-size: 32px;
+        line-height: 38px;
+        margin: 10px 0 0 0;
+      }
+
+      > .Name {
+        width: 100px;
+        font-weight: 300;
+        float: left;
+      }
+
+      > .Value {
+        font-weight: 100;
+        letter-spacing: 0.05em;
+        float: left;
+        padding-left: 10px;
+      }
+    }
+  }
 }

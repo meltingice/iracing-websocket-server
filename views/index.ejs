@@ -4,26 +4,47 @@
   <title><%= title %></title>
 
   <link rel='stylesheet' href='/stylesheets/styles.css' />
+  <link href='http://fonts.googleapis.com/css?family=Keania+One' rel='stylesheet' type='text/css'>
 
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="/javascripts/index.js"></script>
 </head>
 <body>
-  <h2>iRacing</h2>
-  <p>Track: <span id="Track"></span></p>
-  <p>Gear: <span id="Gear"></span></p>
+  <div id="Content">
+    <h1 id="Track">Okayama Short</h1>
 
-  <div id="Telemetry">
-    <div id="Throttle" class="TelemetryBar">
-      Throttle <div></div>
+    <div id="LeftPane" class="Left">
+      <div class="Lap">
+
+      </div>
     </div>
-    <div id="Brake" class="TelemetryBar">
-      Brake <div></div>
+
+    <div id="RightPane" class="Right">
+      <div id="Gear">
+        <div id="GearValue" data-telemetry="Gear">0</div>
+        <div id="GearStages" data-active="0">
+          <div data-stage="1"></div>
+          <div data-stage="2"></div>
+          <div data-stage="3"></div>
+          <div data-stage="4"></div>
+          <div data-stage="5"></div>
+        </div>
+      </div>
+
+      <div id="Engine">
+        <div class="EngineStat">
+          <p class="Name">RPM</p>
+          <p class="Value" data-telemetry="RPM">0</p>
+        </div>
+        <div class="EngineStat">
+          <p class="Name">MPH</p>
+          <p class="Value" data-telemetry="Speed">0</p>
+        </div>
+      </div>
     </div>
-    <div id="Clutch" class="TelemetryBar">
-      Clutch <div></div>
-    </div>
+
+    <div class="Clear"></div>
   </div>
 </body>
 </html>
