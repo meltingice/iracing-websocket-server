@@ -4,7 +4,7 @@ $(document).ready(function () {
   var telemetryCallbacks = {
     Gear: updateGear,
     RPM: updateRPM,
-    Speed: roundTelemetry
+    Speed: updateSpeed
   };
 
   var $gearStages = $("#GearStages");
@@ -37,6 +37,12 @@ $(document).ready(function () {
 
   function updateTelemetry(data) {
     $("[data-telemetry='" + data.name + "']").html(data.value);
+  }
+
+  function updateSpeed(data) {
+    //convert m/s to mph
+    data.value = Math.round(data.value * 2.236936292);
+    updateTelemetry(data);
   }
 
   function roundTelemetry(data) {
