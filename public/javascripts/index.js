@@ -19,6 +19,9 @@ $(document).ready(function () {
     socket.emit('addTelemetry', {name: 'Clutch', onChange: true});
     socket.emit('addTelemetry', {name: 'RPM', onChange: true});
     socket.emit('addTelemetry', {name: 'Speed', onChange: true});
+    socket.emit('addTelemetry', {name: 'Lap', onChange: true});
+    socket.emit('addTelemetry', {name: 'LapBestLapTime', onChange: true});
+    socket.emit('addTelemetry', {name: 'LapLastLapTime', onChange: true});
 
     socket.on('telemetry', function (data) {
       if (telemetryCallbacks[data.name]) {

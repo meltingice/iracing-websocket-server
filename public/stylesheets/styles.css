@@ -175,3 +175,11 @@ html {
   display: inline-block;
   left: 48%;
 }
+#Content .Session {
+  width: 100%;
+  font-family: "Keania One", monotype, sans-serif;
+  font-size: 32px;
+  line-height: 48px;
+  height: 48px;
+  text-align: center;
+}
