@@ -67,4 +67,38 @@ body, html {
       }
     }
   }
+
+  #Input {
+     .InputStat {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      > p {
+        font-size: 32px;
+        line-height: 38px;
+        margin: 10px 0 0 0;
+      }
+
+      #Throttle {
+        background-color: #00ff00;
+      }
+      #Brake {
+        background-color: #ff0000;
+      }
+      #Clutch {
+        background-color: #0000ff;
+      }
+
+      > .Name {
+        width: 0%;
+        font-weight: 300;
+      }
+
+      > .Value {
+        position: absolute;
+        display: inline-block;
+        left: 48%;
+      }
+    }
+  }
 }

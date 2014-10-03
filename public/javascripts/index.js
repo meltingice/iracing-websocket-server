@@ -4,7 +4,10 @@ $(document).ready(function () {
   var telemetryCallbacks = {
     Gear: updateGear,
     RPM: updateRPM,
-    Speed: updateSpeed
+    Speed: updateSpeed,
+    Throttle: updatePedal,
+    Brake: updatePedal,
+    Clutch: updatePedal
   };
 
   var $gearStages = $("#GearStages");
@@ -28,7 +31,6 @@ $(document).ready(function () {
 
   socket.on('driver', function (data) {
     driver = data;
-
   });
 
   socket.on('weekend', function (data) {
@@ -45,6 +47,15 @@ $(document).ready(function () {
     updateTelemetry(data);
   }
 
+  function updatePedal(data) {
+    var percentage = Math.round(data.value * 100);
+    if(data.name == "Clutch") {
+      percentage = 100 - percentage;
+    }
+    $('#' + data.name).css('width', percentage + "%");
+    updateTelemetry(data);
+  }
+
   function roundTelemetry(data) {
     data.value = Math.round(data.value);
     updateTelemetry(data);
@@ -53,6 +64,9 @@ $(document).ready(function () {
   function updateGear(data) {
     if (data.value == -1) {
       data.value = "R";
+    }
+    else if (data.value == 0) {
+      data.value = "N";
     }
 
     updateTelemetry(data);
