@@ -7,7 +7,9 @@ $(document).ready(function () {
     Speed: updateSpeed,
     Throttle: updatePedal,
     Brake: updatePedal,
-    Clutch: updatePedal
+    Clutch: updatePedal,
+    LapBestLapTime: updateTime,
+    LapLastLapTime: updateTime
   };
 
   var $gearStages = $("#GearStages");
@@ -72,6 +74,15 @@ $(document).ready(function () {
       data.value = "N";
     }
 
+    updateTelemetry(data);
+  }
+
+  function updateTime(data) {
+    var mins = Math.floor(data.value / 60);
+    var seconds = (data.value % 60).toFixed(3)
+    if (seconds < 10)
+      seconds = "0"+seconds;
+    data.value = mins + ":" + seconds;
     updateTelemetry(data);
   }
 
