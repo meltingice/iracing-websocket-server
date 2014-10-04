@@ -4,7 +4,7 @@ h3,
 h4,
 h5 {
   font-weight: 100;
-  color: #121821;
+  color: #ffffff;
 }
 #GearStages {
   position: absolute;
@@ -93,6 +93,8 @@ body,
 html {
   margin: 0;
   padding: 0;
+  background-color: #000;
+  color: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .Left {
@@ -177,9 +179,8 @@ html {
 }
 #Content .Session {
   width: 100%;
-  font-family: "Keania One", monotype, sans-serif;
-  font-size: 32px;
+  font-size: 48px;
   line-height: 48px;
-  height: 48px;
+  height: 60px;
   text-align: center;
 }
