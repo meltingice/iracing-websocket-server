@@ -3,6 +3,8 @@ iracing-websocket-server
 
 A WebSocket based server that streams data from iRacing to the browser.
 
+![](http://i.imgur.com/ArsQqqT.png)
+
 # Running 
 First install the deps:
 
