@@ -9,8 +9,12 @@ $(document).ready(function () {
     Brake: updatePedal,
     Clutch: updatePedal,
     LapBestLapTime: updateTime,
-    LapLastLapTime: updateTime
+    LapLastLapTime: updateTime,
+    SessionNum: updateSession
   };
+
+  var sessions = {};
+  var currentSession = -1;
 
   var $gearStages = $("#GearStages");
 
@@ -24,6 +28,7 @@ $(document).ready(function () {
     socket.emit('addTelemetry', {name: 'Lap', onChange: true});
     socket.emit('addTelemetry', {name: 'LapBestLapTime', onChange: true});
     socket.emit('addTelemetry', {name: 'LapLastLapTime', onChange: true});
+    socket.emit('addTelemetry', {name: 'SessionNum', onChange: true});
 
     socket.on('telemetry', function (data) {
       if (telemetryCallbacks[data.name]) {
@@ -40,6 +45,10 @@ $(document).ready(function () {
 
   socket.on('weekend', function (data) {
     $("#Track").html(data.TrackDisplayName);
+  });
+
+  socket.on('sessions', function (data) {
+    sessions = data;
   });
 
   function updateTelemetry(data) {
@@ -73,7 +82,6 @@ $(document).ready(function () {
     else if (data.value == 0) {
       data.value = "N";
     }
-
     updateTelemetry(data);
   }
 
@@ -83,6 +91,11 @@ $(document).ready(function () {
     if (seconds < 10)
       seconds = "0"+seconds;
     data.value = mins + ":" + seconds;
+    updateTelemetry(data);
+  }
+
+  function updateSession(data) {
+    data.value = sessions[data.value].SessionLaps;
     updateTelemetry(data);
   }
 
