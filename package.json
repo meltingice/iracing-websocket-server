@@ -11,7 +11,7 @@
     "stylus": "*",
     "coffee-script": "*",
     "iracing": "*",
-    "socket.io": "*",
-    "less-middleware": "*"
+    "socket.io": "0.9.14",
+    "less-middleware": "0.1.0"
   }
 }

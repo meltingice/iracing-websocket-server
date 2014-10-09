@@ -55,7 +55,7 @@ io.sockets.on('connection', function(socket) {
 
     socket.emit('ready', true);
     socket.emit('weekend', this.sessions.weekend);
-    socket.emit('session', this.sessions.current);
+    socket.emit('sessions', this.sessions.sessions);
     socket.emit('driver', this.cars.driverCar);
 
     return this.onTick(function() {

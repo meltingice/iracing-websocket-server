@@ -15,8 +15,14 @@
     <h1 id="Track">Okayama Short</h1>
 
     <div id="LeftPane" class="Left">
-      <div class="Lap">
-
+      <div class="Session">
+          <span data-telemetry="Lap">0</span> / <span data-telemetry="SessionNum">&infin;</span>
+      </div>
+      <div class="Session">
+          Last Lap: <span data-telemetry="LapLastLapTime">1:24.109</span>
+      </div>
+      <div class="Session">
+          Best Lap: <span data-telemetry="LapBestLapTime">1:23.873</span>
       </div>
     </div>
 
@@ -40,6 +46,20 @@
         <div class="EngineStat">
           <p class="Name">MPH</p>
           <p class="Value" data-telemetry="Speed">0</p>
+        </div>
+      </div>
+      <div id="Input">
+        <div class="InputStat">
+          <p class="Name" id="Throttle">Throttle</p>
+          <p class="Value" data-telemetry="Throttle">0%</p>
+        </div>
+        <div class="InputStat">
+          <p class="Name"id="Brake">Brake</p>
+          <p class="Value" data-telemetry="Brake">0</p>
+        </div>
+        <div class="InputStat">
+          <p class="Name" id="Clutch">Clutch</p>
+          <p class="Value" data-telemetry="Clutch">0</p>
         </div>
       </div>
     </div>

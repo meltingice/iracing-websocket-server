@@ -4,7 +4,7 @@ h3,
 h4,
 h5 {
   font-weight: 100;
-  color: #121821;
+  color: #ffffff;
 }
 #GearStages {
   position: absolute;
@@ -93,6 +93,8 @@ body,
 html {
   margin: 0;
   padding: 0;
+  background-color: #000;
+  color: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .Left {
@@ -146,4 +148,39 @@ html {
   letter-spacing: 0.05em;
   float: left;
   padding-left: 10px;
+}
+#Content #Input .InputStat {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+#Content #Input .InputStat > p {
+  font-size: 32px;
+  line-height: 38px;
+  margin: 10px 0 0 0;
+}
+#Content #Input .InputStat #Throttle {
+  background-color: #00ff00;
+}
+#Content #Input .InputStat #Brake {
+  background-color: #ff0000;
+}
+#Content #Input .InputStat #Clutch {
+  background-color: #0000ff;
+}
+#Content #Input .InputStat > .Name {
+  width: 0%;
+  font-weight: 300;
+}
+#Content #Input .InputStat > .Value {
+  position: absolute;
+  display: inline-block;
+  left: 48%;
+}
+#Content .Session {
+  width: 100%;
+  font-size: 48px;
+  line-height: 48px;
+  height: 60px;
+  text-align: center;
 }
